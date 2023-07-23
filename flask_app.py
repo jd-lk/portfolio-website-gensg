@@ -24,6 +24,10 @@ class Comment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     content = db.Column(db.String(4096))
 
+@app.route('/secret')
+def wibble():
+    return "Congrats! You found the SECRET page :) There's nothing here, now go away."
+
 @app.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "GET":
