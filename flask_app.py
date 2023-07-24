@@ -24,9 +24,15 @@ class Comment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     content = db.Column(db.String(4096))
 
-@app.route('/login')
+@app.route("/login/", methods=["GET", "POST"])
 def login():
-    return render_template("login_page.html")
+    if request.method == "GET":
+        return render_template("login_page.html", error=False)
+
+    if request.form["username"] != "admin" or request.form["password"] != "secret":
+        return render_template("login_page.html", error=True)
+
+    return redirect(url_for('index'))
 
 @app.route('/secret')
 def secret():
