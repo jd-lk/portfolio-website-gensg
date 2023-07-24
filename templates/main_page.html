@@ -18,29 +18,32 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <p style="font-size: 24px; color: white">
+             <p style="font-size: 24px; color: white">
                 Welcome to Jeremiah's Portfolio Site! :)<br><br>
                 Click <a href="https://www.linkedin.com/in/jeremiahding/" style="font-size: 26px; color: lightblue;">here</a> to be connected on Linkedin <a href="https://www.linkedin.com/in/jeremiahding/"> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/800px-LinkedIn_logo_initials.png" alt="Linkedin logo" width="30" height="30" style="vertical-align: middle;">
                 </a>
-            </p>
-                <ul class="nav navbar-nav navbar-right">
-                    {% if current_user.is_authenticated %}
-                        <li><a href="{{ url_for('logout') }}">Log out</a></li>
-                    {% else %}
-                        <li><a href="{{ url_for('login') }}">Log in</a></li>
-                    {% endif %}
-                </ul>
-    </body>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right" style="font-size: 16px; color: lightblue;">
+                {% if current_user.is_authenticated %}
+                    <li><a href="{{ url_for('logout') }}" style="color: red;">Log out</a></li>
+                {% else %}
+                    <li><a href="{{ url_for('login') }}" style="color: green;">Log in</a></li>
+                {% endif %}
+            </ul>
         </div>
     </div>
 </nav>
 
+<p style="font-size: 16px; color: black" align="middle">
+New here? Click "Log in" at the top right corner to leave a comment!<br><br>
+
 <div style="text-align: center;">
-    <a href="http://jered.pythonanywhere.com/secret">
+    <a href="http://jered.pythonanywhere.com/secret" target="_blank">
     <img src="https://gifdb.com/images/high/waving-bear-welcome-ut80igngdxwd6ijr.gif" alt="Welcome Bear GIF" target="_blank" width="200" height= "200">
 </a>
 </div>
-
+<br>
 <div class="container">
 
 {% for comment in comments %}
@@ -75,6 +78,10 @@
         </form>
     </div>
 {% endif %}
+<br>
+<div class="row" style="font-size: 12px; color: grey" align="middle">
+    Created by Jeremiah©, 2023
+</div>
 
 </div><!-- /.container -->
     </body>
