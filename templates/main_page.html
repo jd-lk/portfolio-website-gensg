@@ -23,8 +23,14 @@
                 Click <a href="https://www.linkedin.com/in/jeremiahding/" style="font-size: 26px; color: lightblue;">here</a> to be connected on Linkedin <a href="https://www.linkedin.com/in/jeremiahding/"> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/800px-LinkedIn_logo_initials.png" alt="Linkedin logo" width="30" height="30" style="vertical-align: middle;">
                 </a>
             </p>
-
-</body>
+                <ul class="nav navbar-nav navbar-right">
+                    {% if current_user.is_authenticated %}
+                        <li><a href="{{ url_for('logout') }}">Log out</a></li>
+                    {% else %}
+                        <li><a href="{{ url_for('login') }}">Log in</a></li>
+                    {% endif %}
+                </ul>
+    </body>
         </div>
     </div>
 </nav>
@@ -43,12 +49,15 @@
     </div>
 {% endfor %}
 
-        <div class="row">
-            <form action="." method="POST">
-                <textarea class="form-control" name="contents" placeholder="Enter a comment"></textarea>
-                <input type="submit" class="btn btn-success" value="Post comment">
-            </form>
-        </div>
+{% if current_user.is_authenticated %}
+    <div class="row">
+        <form action="." method="POST">
+            <textarea name="contents" placeholder="Enter a comment" class="form-control"></textarea>
+            <input type="submit" class="btn btn-success" value="Post comment">
+        </form>
+    </div>
+{% endif %}
+
 </div><!-- /.container -->
     </body>
 </html>
