@@ -44,15 +44,20 @@
 <div class="container">
 
 {% for comment in comments %}
-    <div class="row">
+    <div class="row" style="margin-bottom: lex" align="middle">
         {{ comment.content }}
     </div>
+    <div class="row" align="middle">
+        <small></small> Posted {{timestamp.strftime("%A, %d, %B, %Y at %H:%M") }} by anonymous</small>
+    </div>
+</div>
+
 {% endfor %}
 
 {% if current_user.is_authenticated %}
-    <div class="row">
+    <div class="row" align ="middle">
         <form action="." method="POST">
-            <textarea name="contents" placeholder="Enter a comment" class="form-control"></textarea>
+            <textarea name="contents" placeholder="Enter a comment" class="form-control" style="width:800; height:120;"></textarea>
             <input type="submit" class="btn btn-success" value="Post comment">
         </form>
     </div>
