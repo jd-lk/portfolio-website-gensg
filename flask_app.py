@@ -3,6 +3,7 @@
 
 from flask import Flask, redirect, render_template, request, url_for
 from flask_sqlalchemy import SQLAlchemy
+from flask_login import login_user, LoginManager, UserMixin
 
 app = Flask(__name__)
 app.config["DEBUG"] = True
@@ -18,6 +19,21 @@ app.config["SQLALCHEMY_POOL_RECYCLE"] = 299
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 db = SQLAlchemy (app)
+app.secret_key = "something only you know"
+login_manager = LoginManager()
+login_manager.init_app(app)
+
+class User(UserMixin):
+
+    def __init__(self, username, password_hash):
+        self.username = username
+        self.password_hash = password_hash
+
+    def check_password(self, password):
+        return check_password_hash(self.password_hash, password)
+
+    def get_id(self):
+        return self.username
 
 class Comment(db.Model):
     __tablename__ = "comments"
