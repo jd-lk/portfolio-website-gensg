@@ -1,0 +1,238 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+        <title>Jeremiah's Portfolio Site</title>
+        <style>
+            /* Add a background color and an image to the body */
+            body {
+                background-color: #f0f8ff;  /* AliceBlue for example, you can use any color you like */
+                background-image: url('https://placeimg.com/640/480/nature');  /* Replace with your preferred image */
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+
+            /* Style for the nav links */
+            .navbar .navbar-nav a {
+                color: #fff; /* white color text */
+            }
+
+            /* Change navbar color */
+            .navbar {
+                background-color: #333; /* dark grey color */
+            }
+            .back-to-top {
+    display: none; /* Hide the button by default */
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+
+.back-to-top:hover {
+    background-color: #555;
+}
+        </style>
+    </head>
+    <body>
+
+<nav class="navbar navbar-inverse">
+    <div class="container">
+        <div class="navbar-header">
+            <!-- This is where your hamburger icon will appear on small screens -->
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <!-- Logo or site name can go here, or you can remove this div if you don't want it -->
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-collapse">
+            <!-- Adding list of links -->
+            <ul class="nav navbar-nav" style="font-size: 20px;">
+                <li><a href="http://jered.pythonanywhere.com/">Home</a></li>
+                <li><a href="http://jered.pythonanywhere.com/about">About</a></li>
+                <li><a href="http://jered.pythonanywhere.com/portfolio">Portfolio</a></li>
+                <li><a href="http://jered.pythonanywhere.com/contact">Contact</a></li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right" style="font-size: 20px;">
+                {% if current_user.is_authenticated %}
+                    <li><a href="{{ url_for('logout') }}" style="color: red;">Log out</a></li>
+                {% else %}
+                    <li><a href="{{ url_for('login') }}" style="color: green;">Log in</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<head>
+    <title>Blog Home</title>
+    <style>
+        .center-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<p style="font-size: 16px; color: black" align="middle">
+New here? Click "Log in" at the top right corner to leave a comment!<br><br>
+
+New here? Click "Log in" at the top right corner to leave a comment!<br><br>
+
+New here? Click "Log in" at the top right corner to leave a comment!<br><br>
+
+New here? Click "Log in" at the top right corner to leave a comment!<br><br>New here? Click "Log in" at the top right corner to leave a comment!<br><br>New here? Click "Log in" at the top right corner to leave a comment!<br><br>
+
+
+New here? Click "Log in" at the top right corner to leave a comment!<br><br>
+
+New here? Click "Log in" at the top right corner to leave a comment!<br><br>
+
+New here? Click "Log in" at the top right corner to leave a comment!<br><br>
+
+New here? Click "Log in" at the top right corner to leave a comment!<br><br>
+
+New here? Click "Log in" at the top right corner to leave a comment!<br><br>
+
+New here? Click "Log in" at the top right corner to leave a comment!<br><br>
+
+New here? Click "Log in" at the top right corner to leave a comment!<br><br>
+
+New here? Click "Log in" at the top right corner to leave a comment!<br><br>
+
+New here? Click "Log in" at the top right corner to leave a comment!<br><br>
+
+New here? Click "Log in" at the top right corner to leave a comment!<br><br>
+
+New here? Click "Log in" at the top right corner to leave a comment!<br><br>
+
+New here? Click "Log in" at the top right corner to leave a comment!<br><br>
+
+New here? Click "Log in" at the top right corner to leave a comment!<br><br>
+
+New here? Click "Log in" at the top right corner to leave a comment!<br><br>
+
+New here? Click "Log in" at the top right corner to leave a comment!<br><br>
+
+New here? Click "Log in" at the top right corner to leave a comment!<br><br>
+
+New here? Click "Log in" at the top right corner to leave a comment!<br><br>
+
+New here? Click "Log in" at the top right corner to leave a comment!<br><br>
+
+New here? Click "Log in" at the top right corner to leave a comment!<br><br>
+
+New here? Click "Log in" at the top right corner to leave a comment!<br><br>
+
+New here? Click "Log in" at the top right corner to leave a comment!<br><br>
+
+New here? Click "Log in" at the top right corner to leave a comment!<br><br>
+
+New here? Click "Log in" at the top right corner to leave a comment!<br><br>
+
+New here? Click "Log in" at the top right corner to leave a comment!<br><br>
+
+New here? Click "Log in" at the top right corner to leave a comment!<br><br>
+
+New here? Click "Log in" at the top right corner to leave a comment!<br><br>
+
+New here? Click "Log in" at the top right corner to leave a comment!<br><br>
+
+New here? Click "Log in" at the top right corner to leave a comment!<br><br>
+
+New here? Click "Log in" at the top right corner to leave a comment!<br><br>
+
+New here? Click "Log in" at the top right corner to leave a comment!<br><br>
+
+New here? Click "Log in" at the top right corner to leave a comment!<br><br>
+
+New here? Click "Log in" at the top right corner to leave a comment!<br><br>
+
+New here? Click "Log in" at the top right corner to leave a comment!<br><br>
+
+New here? Click "Log in" at the top right corner to leave a comment!<br><br>
+
+New here? Click "Log in" at the top right corner to leave a comment!<br><br>
+
+<div style="text-align: center;">
+    <a href="http://jered.pythonanywhere.com/secret" target="_blank">
+    <img src="https://gifdb.com/images/high/waving-bear-welcome-ut80igngdxwd6ijr.gif" alt="Welcome Bear GIF" target="_blank" width="200" height= "200">
+</a>
+</div>
+<br>
+<div class="container">
+
+{% for comment in comments %}
+    <div class="row" style="margin-bottom: lex" align="middle">
+        {{ comment.content }}
+    </div>
+    <div class="row" align="middle">
+        <small>
+        Posted
+        {% if comment.posted %}
+            {{ comment.posted.strftime("%A, %d %B %Y at %H:%M") }}
+        {% else %}
+            at an unknown time
+        {% endif %}
+        by
+        {% if comment.commenter %}
+            {{ comment.commenter.username }}
+        {% else %}
+            anonymous
+        {% endif %}
+        </small>
+    </div>
+</div>
+
+{% endfor %}
+
+<div class="row" align ="middle">
+    <form action="." method="POST">
+        <textarea name="contents" placeholder="{{ 'Enter a comment' if current_user.is_authenticated else 'Please log in to leave a comment' }}" class="form-control" style="width:800; height:120;" {{ 'disabled' if not current_user.is_authenticated }}></textarea>
+        {% if current_user.is_authenticated %}
+            <input type="submit" class="btn btn-success" value="Post comment">
+        {% endif %}
+
+<div class="row" style="font-size: 12px; color: grey" align="middle">
+    Created by Jeremiah©, 2023
+</div>
+
+<script>
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {
+        scrollFunction();
+    };
+
+    function scrollFunction() {
+        var backToTopButton = document.querySelector(".back-to-top");
+
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            backToTopButton.style.display = "block";
+        } else {
+            backToTopButton.style.display = "none";
+        }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    document.querySelector(".back-to-top").addEventListener("click", function() {
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE, and Opera
+    });
+</script>
+
+</div><!-- /.container -->
+<a href="#" class="back-to-top">Back to Top</a>
+    </body>
+</html>
