@@ -1,56 +1,142 @@
 <html>
     <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
         <title>Jeremiah's Portfolio Site</title>
+        <style>
+            /* Add a background color and an image to the body */
+            body {
+                background-color: #B0C4DE;
+                background-image: url('https://placeimg.com/640/480/nature');
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+
+            /* Change navbar color */
+            .navbar {
+                background-color: #333;
+                box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);  /* Add shadow */
+            }
+
+            /* Style for the nav links */
+            .navbar .navbar-nav a {
+                color: #fff;
+                font-family: 'Arial', sans-serif;  /* Use a stylish, readable font */
+                font-size: 20px;  /* Increase font size */
+                transition: 0.3s;  /* For smooth hover effect */
+            }
+
+            /* Hover effect */
+            .navbar .navbar-nav a:hover {
+                color: #ffc107;  /* Highlight menu items on hover */
+                text-decoration: none;  /* Remove underline */
+            }
+
+            /* Active state */
+            .navbar .navbar-nav .active a {
+                color: #28a745;  /* Highlight active menu item */
+            }
+
+            /* Spacing between elements */
+            .navbar .navbar-nav li {
+                margin-right: 10px;  /* Increase spacing */
+            }
+            /* Logout/Login links */
+            .navbar .navbar-nav .user-action a {
+                color: green;
+            }
+
+            .navbar .navbar-nav .user-action a.logout {
+                color: red;
+            }
+            .clock-container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 18px;
+                color: black;
+            }
+            .clock-container p {
+                margin-right: 10px;
+                margin-bottom: 0;  /* To remove default margin */
+            }
+            .clock-container div {
+                line-height: 1;  /* To align the clock with the text */
+            }
+
+            .back-to-top {
+    display: none; /* Hide the button by default */
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #000000;
+    color: #FFFFFF;
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+
+.back-to-top:hover {
+    background-color: #FFFFFF;
+}
+        </style>
     </head>
-
     <body>
-<nav class="navbar navbar-inverse">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-             <p style="font-size: 24px; color: white">
-                Welcome to Jeremiah's Portfolio Site! :)<br><br>
-                Click <a href="https://www.linkedin.com/in/jeremiahding/" style="font-size: 26px; color: lightblue;">here</a> to be connected on Linkedin <a href="https://www.linkedin.com/in/jeremiahding/"> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/800px-LinkedIn_logo_initials.png" alt="Linkedin logo" width="30" height="30" style="vertical-align: middle;">
-                </a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar-right" style="font-size: 16px; color: lightblue;">
-                {% if current_user.is_authenticated %}
-                    <li><a href="{{ url_for('logout') }}" style="color: red;">Log out</a></li>
-                {% else %}
-                    <li><a href="{{ url_for('login') }}" style="color: green;">Log in</a></li>
-                {% endif %}
-            </ul>
-        </div>
-    </div>
-</nav>
+        <nav class="navbar navbar-inverse">
+            <div class="container">
+                <div class="navbar-header">
+                </div>
+                <div id="navbar">
+                    <ul class="nav navbar-nav">
+                        <li><a href="http://jered.pythonanywhere.com/">Home</a></li>
+                        <li><a href="http://jered.pythonanywhere.com/about">About</a></li>
+                        <li><a href="http://jered.pythonanywhere.com/portfolio">Portfolio</a></li>
+                        <li><a href="http://jered.pythonanywhere.com/contact">Contact</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        {% if current_user.is_authenticated %}
+                            <li class="user-action"><a class="logout" href="{{ url_for('logout') }}">Log out</a></li>
+                        {% else %}
+                            <li class="user-action"><a href="{{ url_for('login') }}">Log in</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </nav>
 
-<p style="font-size: 16px; color: black" align="middle">
-New here? Click "Log in" at the top right corner to leave a comment!<br><br>
-
+<br>
 <div style="text-align: center;">
     <a href="http://jered.pythonanywhere.com/secret" target="_blank">
-    <img src="https://gifdb.com/images/high/waving-bear-welcome-ut80igngdxwd6ijr.gif" alt="Welcome Bear GIF" target="_blank" width="200" height= "200">
+    <img src="https://gifdb.com/images/high/waving-bear-welcome-ut80igngdxwd6ijr.gif" alt="Welcome Bear GIF" width="200" height= "200">
 </a>
 </div>
 <br>
+
 <div class="container">
 
+<p style="font-size: 16px; color: black" align="middle">
+Welcome to my portfolio page! This project was birthed from a course I'm currently undertaking now (Generation Singapore's Cloud Support & DevOps).<br>
+<br>
+To begin, take a look at the links on top! You'll find more information about me, my portfolio, and how we can get in touch.<br>
+<br>
+To leave a comment below, simply click the "Log in" button at the top right hand corner, type in the credentials provided, and you're good to go!<br>
+<br>
+I hope you enjoy your stay!
+<br>
+<br>
+</p>
+
+<div class="row">
+    <hr style="border: none; border-top: 2px solid #000000; width: 100%; margin: auto;">
+</div>
+<br>
+
 {% for comment in comments %}
-    <div class="row" style="margin-bottom: lex" align="middle">
+    <div class="row" style="margin-bottom: lex; color: black;" align="middle">
         {{ comment.content }}
     </div>
-    <div class="row" align="middle">
+    <div class="row" style="color: black;" align="middle">
         <small>
         Posted
         {% if comment.posted %}
@@ -66,23 +152,79 @@ New here? Click "Log in" at the top right corner to leave a comment!<br><br>
         {% endif %}
         </small>
     </div>
-</div>
-
 {% endfor %}
-
-{% if current_user.is_authenticated %}
-    <div class="row" align ="middle">
-        <form action="." method="POST">
-            <textarea name="contents" placeholder="Enter a comment" class="form-control" style="width:800; height:120;"></textarea>
-            <input type="submit" class="btn btn-success" value="Post comment">
-        </form>
-    </div>
-{% endif %}
 <br>
-<div class="row" style="font-size: 12px; color: grey" align="middle">
-    Created by Jeremiah©, 2023
+<div class="row" align ="middle">
+    <form action="." method="POST">
+        <textarea name="contents" placeholder="{{ 'Enter a comment' if current_user.is_authenticated else 'Please log in to leave a comment' }}" class="form-control" style="width:800; height:120;" {{ 'disabled' if not current_user.is_authenticated }}></textarea>
+        {% if current_user.is_authenticated %}
+            <input type="submit" class="btn btn-success" value="Post comment" style="margin-top: 10px;">
+        {% endif %}
+    </form>
 </div>
+
+<div class="clock-container">
+            <p>Your current time:</p>
+            <div id="clock"></div>
+        </div>
+
+        <script>
+            function updateClock(){
+                var now = new Date(); // get current date and time
+                var h = now.getHours();
+                var m = now.getMinutes();
+                var s = now.getSeconds();
+
+                // add a zero in front of numbers<10 to make it two digits
+                m = checkTime(m);
+                s = checkTime(s);
+
+                document.getElementById('clock').innerHTML = h + ":" + m + ":" + s;
+                setTimeout(updateClock, 500); // update time every 500 ms
+            }
+
+            function checkTime(i) {
+                if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+                return i;
+            }
+
+            window.onload = updateClock; // call the function when window loads
+        </script>
+
+<br>
+<hr style="border: none; border-top: 2px solid #000000; width: 100%; margin: auto;">
+<br>
+    <div class="row" style="font-size: 12px; color: black" align="middle">
+        A simple website using Python, Flask, and HTML.
+        <br>
+        Copyright© Jeremiah, 2023
+    </div>
+<br>
 
 </div><!-- /.container -->
-    </body>
+<a href="#" class="back-to-top">Back to Top</a>
+<script>
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {
+        scrollFunction();
+    };
+
+    function scrollFunction() {
+        var backToTopButton = document.querySelector(".back-to-top");
+
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            backToTopButton.style.display = "block";
+        } else {
+            backToTopButton.style.display = "none";
+        }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    document.querySelector(".back-to-top").addEventListener("click", function() {
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE, and Opera
+    });
+</script>
+
+</body>
 </html>

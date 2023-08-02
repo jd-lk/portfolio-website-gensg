@@ -3,29 +3,97 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+        <title>Jeremiah's Portfolio Site</title>
+        <style>
+            /* Add a background color and an image to the body */
+            body {
+                background-color: #B0C4DE;  /* AliceBlue for example, you can use any color you like */
+                background-image: url('https://placeimg.com/640/480/nature');  /* Replace with your preferred image */
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+            /* Change navbar color */
+            .navbar {
+                background-color: #333;
+                box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);  /* Add shadow */
+            }
+            /* Style for the nav links */
+            .navbar .navbar-nav a {
+                color: #fff;
+                font-family: 'Arial', sans-serif;  /* Use a stylish, readable font */
+                font-size: 20px;  /* Increase font size */
+                transition: 0.3s;  /* For smooth hover effect */
+            }
+            /* Hover effect */
+            .navbar .navbar-nav a:hover {
+                color: #ffc107;  /* Highlight menu items on hover */
+                text-decoration: none;  /* Remove underline */
+            }
+            /* Active state */
+            .navbar .navbar-nav .active a {
+                color: #28a745;  /* Highlight active menu item */
+            }
+            /* Spacing between elements */
+            .navbar .navbar-nav li {
+                margin-right: 10px;  /* Increase spacing */
+            }
+            /* Logout/Login links */
+            .navbar .navbar-nav .user-action a {
+                color: green;
+            }
+            .navbar .navbar-nav .user-action a.logout {
+                color: red;
+            }
+            .clock-container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 18px;
+                color: black;
+            }
+            .clock-container p {
+                margin-right: 10px;
+                margin-bottom: 0;  /* To remove default margin */
+            }
+            .clock-container div {
+                line-height: 1;  /* To align the clock with the text */
+            }
+            .back-to-top {
+    display: none; /* Hide the button by default */
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #000000;
+    color: #FFFFFF;
+    padding: 10px 15px;
+    border-radius: 5px;
+}
 
-        <title>Jeremiah's Portfolio Site: Login</title>
+.back-to-top:hover {
+    background-color: #FFFFFF;
+}
+        </style>
     </head>
-
     <body>
         <nav class="navbar navbar-inverse">
             <div class="container">
                 <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <p style="font-size: 24px; color: white">
-                        Jeremiah's Portfolio Site: Login Page</p>
+                    <!-- Logo or site name can go here, or you can remove this div if you don't want it -->
+                </div>
+                <div id="navbar">
+                    <!-- Adding list of links -->
+<ul class="nav navbar-nav" style="font-size: 20px;">
+    <li><a href="http://jered.pythonanywhere.com/">Home</a></li>
+    <li><a href="http://jered.pythonanywhere.com/about">About</a></li>
+    <li><a href="http://jered.pythonanywhere.com/portfolio">Portfolio</a></li>
+    <li><a href="http://jered.pythonanywhere.com/contact">Contact</a></li>
+</ul>
                 </div>
             </div>
         </nav>
 
-        <div class="container">
+<div class="container">
 
 {% if error %}
     <div class="alert alert-warning" role="alert">
@@ -47,7 +115,77 @@
                 </form>
             </div>
 
+<div class="row" style="font-size: 14px; color: black" align="left">
+<b>Guest Login:</b><br>
+Username: guest<br>
+Password: secret<br>
+<br>
+Username: tester<br>
+Password: super-secret<br>
+</div>
+
+<br>
+
+<div class="clock-container">
+            <p>Your current time:</p>
+            <div id="clock"></div>
         </div>
 
-    </body>
+        <script>
+            function updateClock(){
+                var now = new Date(); // get current date and time
+                var h = now.getHours();
+                var m = now.getMinutes();
+                var s = now.getSeconds();
+
+                // add a zero in front of numbers<10 to make it two digits
+                m = checkTime(m);
+                s = checkTime(s);
+
+                document.getElementById('clock').innerHTML = h + ":" + m + ":" + s;
+                setTimeout(updateClock, 500); // update time every 500 ms
+            }
+
+            function checkTime(i) {
+                if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+                return i;
+            }
+
+            window.onload = updateClock; // call the function when window loads
+        </script>
+<br>
+<hr style="border: none; border-top: 2px solid #000000; width: 100%; margin: auto;">
+<br>
+    <div class="row" style="font-size: 12px; color: black" align="middle">
+        A simple website using Python, Flask, and HTML.
+        <br>
+        Copyright© Jeremiah, 2023
+    </div>
+<br>
+
+</div><!-- /.container -->
+<a href="#" class="back-to-top">Back to Top</a>
+<script>
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {
+        scrollFunction();
+    };
+
+    function scrollFunction() {
+        var backToTopButton = document.querySelector(".back-to-top");
+
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            backToTopButton.style.display = "block";
+        } else {
+            backToTopButton.style.display = "none";
+        }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    document.querySelector(".back-to-top").addEventListener("click", function() {
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE, and Opera
+    });
+</script>
+</body>
 </html>

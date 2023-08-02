@@ -1,14 +1,16 @@
 
 # A very simple Flask Hello World app for you to get started with...
 
-from flask import Flask, redirect, render_template, request, url_for
+from flask import Flask, redirect, render_template, request, url_for, redirect
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import login_user, LoginManager, UserMixin, login_required, logout_user, current_user
 from werkzeug.security import check_password_hash
 from datetime import datetime
+import pytz
 from flask_migrate import Migrate
 
 app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/test.db'
 app.config["DEBUG"] = True
 
 SQLALCHEMY_DATABASE_URI = "mysql+mysqlconnector://{username}:{password}@{hostname}/{databasename}".format(
@@ -53,6 +55,13 @@ class Comment(db.Model):
     commenter_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=True)
     commenter = db.relationship('User', foreign_keys=commenter_id)
 
+class Post(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(80), nullable=False)
+    content = db.Column(db.String(200), nullable=False)
+    author = db.Column(db.String(100), nullable=False)
+    timestamp = db.Column(db.DateTime, default=datetime.now(pytz.timezone('Asia/Singapore')))
+
 @app.route("/login/", methods=["GET", "POST"])
 def login():
     if request.method == "GET":
@@ -74,9 +83,9 @@ def logout():
     logout_user()
     return redirect(url_for('index'))
 
-@app.route('/secret')
-def secret():
-    return "Congrats! You found the SECRET page :) There's nothing here, now go away."
+@app.route('/portfolio')
+def portfolio():
+    return render_template("portfolio_page.html")
 
 @app.route("/", methods=["GET", "POST"])
 def index():
@@ -90,3 +99,19 @@ def index():
     db.session.add(comment)
     db.session.commit()
     return redirect(url_for('index'))
+
+@app.route('/contact')
+def contact():
+    return render_template("contact_page.html")
+
+@app.route('/about')
+def about():
+    return render_template("about_page.html")
+
+@app.route('/secret')
+def secret():
+    return render_template("secret_page.html")
+
+@app.route('/test')
+def test():
+    return render_template("test_page.html")
